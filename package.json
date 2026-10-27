@@ -1,0 +1,21 @@
+{
+  "name": "zero-trust-sistem-nilai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Praktikum Keamanan Informasi: Sistem Nilai dengan Zero Trust",
+  "workspaces": ["gateway", "service-nilai", "service-transkrip"],
+  "scripts": {
+    "dev": "concurrently -k -n gateway,nilai,transkrip -c blue,green,yellow \"npm:dev:gateway\" \"npm:dev:nilai\" \"npm:dev:transkrip\"",
+    "dev:gateway": "npm --workspace gateway run dev",
+    "dev:nilai": "npm --workspace service-nilai run dev",
+    "dev:transkrip": "npm --workspace service-transkrip run dev",
+    "seed": "node database/seed.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "mysql2": "^3.14.1"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
